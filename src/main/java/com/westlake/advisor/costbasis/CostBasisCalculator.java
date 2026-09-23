@@ -1,6 +1,7 @@
 package com.westlake.advisor.costbasis;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,11 +21,15 @@ public class CostBasisCalculator {
      * Total cost basis for a position, summing all open lots.
      */
     public BigDecimal totalCostBasis(Position position) {
-        double total = 0.0;
+        return exactTotalCostBasis(position).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal exactTotalCostBasis(Position position) {
+        BigDecimal total = BigDecimal.ZERO;
         for (TaxLot lot : position.getLots()) {
-            total += lot.getUnitCost().doubleValue() * lot.getQuantity().doubleValue();
+            total = total.add(lot.getUnitCost().multiply(lot.getQuantity()));
         }
-        return new BigDecimal(total).setScale(2, BigDecimal.ROUND_HALF_UP);
+        return total;
     }
 
     /**
@@ -35,8 +40,7 @@ public class CostBasisCalculator {
         if (qty.signum() == 0) {
             return BigDecimal.ZERO;
         }
-        double avg = totalCostBasis(position).doubleValue() / qty.doubleValue();
-        return new BigDecimal(avg).setScale(4, BigDecimal.ROUND_HALF_UP);
+        return exactTotalCostBasis(position).divide(qty, 4, RoundingMode.HALF_UP);
     }
 
     /**
