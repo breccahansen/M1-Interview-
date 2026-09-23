@@ -35,4 +35,29 @@ public class CostBasisCalculatorTest {
     public void totalCostBasisSumsLots() {
         assertEquals(new BigDecimal("19974.29"), calc.totalCostBasis(twoLotPosition()));
     }
+
+    @Test
+    public void totalCostBasisRoundsHalfUpForThreeDecimalUnitCost() {
+        // WMP-1042: 33 x 50.135 = 1654.455 -> 1654.46 (CBASIS book of record)
+        Position p = new Position("VEA");
+        p.addLot(new TaxLot("L5", new BigDecimal("33"), new BigDecimal("50.135"), LocalDate.of(2024, 5, 9)));
+        assertEquals(new BigDecimal("1654.46"), calc.totalCostBasis(p));
+        assertEquals(new BigDecimal("50.1350"), calc.averageUnitCost(p));
+    }
+
+    @Test
+    public void totalCostBasisIsExactAcrossMultipleFractionalLots() {
+        // 12.5 x 10.005 = 125.0625 ; 7 x 20.015 = 140.105 ; sum 265.1675 -> 265.17
+        Position p = new Position("VTI");
+        p.addLot(new TaxLot("L1", new BigDecimal("12.5"), new BigDecimal("10.005"), LocalDate.of(2024, 1, 2)));
+        p.addLot(new TaxLot("L2", new BigDecimal("7"), new BigDecimal("20.015"), LocalDate.of(2024, 2, 3)));
+        assertEquals(new BigDecimal("265.17"), calc.totalCostBasis(p));
+        // 265.1675 / 19.5 = 13.59833... -> 13.5983 (from the unrounded total)
+        assertEquals(new BigDecimal("13.5983"), calc.averageUnitCost(p));
+    }
+
+    @Test
+    public void averageUnitCostIsZeroForEmptyPosition() {
+        assertEquals(BigDecimal.ZERO, calc.averageUnitCost(new Position("EMPTY")));
+    }
 }
