@@ -29,9 +29,9 @@ onboarded to the automated release train.
 
 ## Acceptance criteria
 
-- [ ] JaCoCo line coverage ≥ 80% for `com.westlake.advisor.transfer` and
+- [x] JaCoCo line coverage ≥ 80% for `com.westlake.advisor.transfer` and
       `com.westlake.advisor.costbasis`.
-- [ ] Karma line coverage ≥ 80% for `frontend/src/app`
+- [x] Karma line coverage ≥ 80% for `frontend/src/app`
       (`npm test -- --watch=false --browsers=ChromeHeadless`, see `coverage/`).
-- [ ] Backend tests run in under 5 seconds; frontend suite under 30 seconds.
-- [ ] Tests assert behaviour (values, rejections), not just "does not throw".
+- [x] Backend tests run in under 5 seconds; frontend suite under 30 seconds.
+- [x] Tests assert behaviour (values, rejections), not just "does not throw".
