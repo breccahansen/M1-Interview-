@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lot-badge',
-  template: `<span class="badge" [class.many]="lots > 3">{{ label }}</span>`
+  template: `<span class="badge" [class.many]="lots > 3">{{ label }}</span>`,
+  standalone: true
 })
 export class LotBadgeComponent {
   @Input() lots = 0;

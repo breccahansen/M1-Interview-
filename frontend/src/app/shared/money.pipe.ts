@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 /** Formats a number as USD with exactly two decimals; blank for null/undefined. */
-@Pipe({ name: 'money' })
+@Pipe({ name: 'money', standalone: true })
 export class MoneyPipe implements PipeTransform {
   transform(value: number | null | undefined, showSign = false): string {
     if (value === null || value === undefined || isNaN(value)) {

@@ -8,7 +8,8 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 // Pull in the whole app graph so coverage reflects every source file, not just files with specs.
-import './app/app.module';
+import './app/app.component';
+import './app/app.routes';
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(

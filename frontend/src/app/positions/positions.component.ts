@@ -4,10 +4,15 @@ import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AdvisorApiService } from '../shared/advisor-api.service';
 import { PositionView } from '../shared/models';
+import { NgFor, NgIf } from '@angular/common';
+import { LotBadgeComponent } from '../shared/lot-badge.component';
+import { MoneyPipe } from '../shared/money.pipe';
 
 @Component({
   selector: 'app-positions',
-  templateUrl: './positions.component.html'
+  templateUrl: './positions.component.html',
+  standalone: true,
+  imports: [NgFor, NgIf, LotBadgeComponent, MoneyPipe]
 })
 export class PositionsComponent implements OnInit, OnDestroy {
   accountNumber = '';
