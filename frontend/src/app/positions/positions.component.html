@@ -1,22 +1,30 @@
 <section>
   <h1>Positions · {{ accountNumber }}</h1>
-  <p *ngIf="loading">Loading…</p>
-  <p class="error" *ngIf="error">{{ error }}</p>
-  <table *ngIf="!loading && !error">
-    <thead>
-      <tr><th>Symbol</th><th>Quantity</th><th>Avg unit cost</th><th>Cost basis</th><th>Lots</th></tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of positions">
-        <td>{{ p.symbol }}</td>
-        <td>{{ p.quantity }}</td>
-        <td>{{ p.averageUnitCost | money }}</td>
-        <td>{{ p.costBasis | money }}</td>
-        <td><app-lot-badge [lots]="p.lots"></app-lot-badge></td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr><td colspan="3">Total</td><td>{{ totalCostBasis | money }}</td><td></td></tr>
-    </tfoot>
-  </table>
+  @if (loading) {
+    <p>Loading…</p>
+  }
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+  @if (!loading && !error) {
+    <table>
+      <thead>
+        <tr><th>Symbol</th><th>Quantity</th><th>Avg unit cost</th><th>Cost basis</th><th>Lots</th></tr>
+      </thead>
+      <tbody>
+        @for (p of positions; track p) {
+          <tr>
+            <td>{{ p.symbol }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>{{ p.averageUnitCost | money }}</td>
+            <td>{{ p.costBasis | money }}</td>
+            <td><app-lot-badge [lots]="p.lots"></app-lot-badge></td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">Total</td><td>{{ totalCostBasis | money }}</td><td></td></tr>
+      </tfoot>
+    </table>
+  }
 </section>

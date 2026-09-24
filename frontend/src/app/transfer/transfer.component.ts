@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
 import { AdvisorApiService } from '../shared/advisor-api.service';
 import { TransferRequest, TransferResult } from '../shared/models';
 import { MoneyPipe } from '../shared/money.pipe';
@@ -9,7 +8,7 @@ import { MoneyPipe } from '../shared/money.pipe';
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf, MoneyPipe]
+  imports: [ReactiveFormsModule, MoneyPipe]
 })
 export class TransferComponent {
   readonly methods = ['FIFO', 'LIFO', 'HIGH_COST', 'AVERAGE_COST'];

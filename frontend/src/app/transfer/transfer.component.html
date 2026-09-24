@@ -7,15 +7,21 @@
     <label>Quantity <input type="number" formControlName="quantity"></label>
     <label>Lot relief
       <select formControlName="method">
-        <option *ngFor="let m of methods" [value]="m">{{ m }}</option>
+        @for (m of methods; track m) {
+          <option [value]="m">{{ m }}</option>
+        }
       </select>
     </label>
     <button type="submit" [disabled]="submitting">Submit transfer</button>
   </form>
-  <p class="error" *ngIf="error">{{ error }}</p>
-  <div class="result" *ngIf="result">
-    <strong>{{ result.transferId }}</strong> — moved {{ result.quantity }} {{ result.symbol }}
-    ({{ result.lotsMoved }} lots, {{ result.costBasisMoved | money }} cost basis)
-    from {{ result.fromAccount }} to {{ result.toAccount }}.
-  </div>
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+  @if (result) {
+    <div class="result">
+      <strong>{{ result.transferId }}</strong> — moved {{ result.quantity }} {{ result.symbol }}
+      ({{ result.lotsMoved }} lots, {{ result.costBasisMoved | money }} cost basis)
+      from {{ result.fromAccount }} to {{ result.toAccount }}.
+    </div>
+  }
 </section>
