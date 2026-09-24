@@ -18,7 +18,7 @@
   <description>Advisor-facing account, transfer and cost-basis services (WMP)</description>
 
   <properties>
-    <java.version>17</java.version>
+    <java.version>11</java.version>
     <commons-text.version>1.9</commons-text.version>
   </properties>
 

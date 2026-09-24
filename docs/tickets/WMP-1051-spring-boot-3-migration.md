@@ -6,6 +6,7 @@
 | Priority | P1 |
 | Component | platform |
 | Epic | Java Platform Modernization (WMP-1000) |
+| Blocked by | WMP-1091 (Java 11 → 17) |
 
 ## Why
 
@@ -14,6 +15,7 @@ requires all Tier-1 services to be on a supported Boot line by end of quarter.
 
 ## Scope
 
+- Requires Java 17 (WMP-1091) — do it first or in the same PR.
 - Upgrade parent to Spring Boot 3.x (latest GA in the 3.x line).
 - Replace `javax.*` imports with `jakarta.*` (validation, servlet).
 - Remove deprecated `BigDecimal.ROUND_*` constants in favour of `RoundingMode`.

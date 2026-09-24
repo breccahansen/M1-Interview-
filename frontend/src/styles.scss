@@ -1,0 +1,15 @@
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: #1a1f2b; background: #f5f6f8; }
+.topbar { display: flex; align-items: center; gap: 24px; padding: 12px 24px; background: #0a2a4a; color: #fff; }
+.topbar .brand { font-weight: 600; }
+.topbar a { color: #cfe0f2; margin-right: 16px; text-decoration: none; }
+.topbar a.active { color: #fff; border-bottom: 2px solid #72b9ce; }
+main { padding: 24px; max-width: 960px; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { padding: 8px 12px; border-bottom: 1px solid #e3e6ea; text-align: left; }
+tfoot td { font-weight: 600; }
+.badge { padding: 2px 8px; border-radius: 10px; background: #e3e6ea; font-size: 12px; }
+.badge.many { background: #fbe7c6; }
+form label { display: block; margin-bottom: 12px; }
+form input, form select { display: block; margin-top: 4px; padding: 6px; width: 240px; }
+.error { color: #b3261e; }
+.result { background: #e6f4ea; padding: 12px; border-radius: 6px; }
