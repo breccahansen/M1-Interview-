@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "advisor-workstation:build:production"
+              "buildTarget": "advisor-workstation:build:production"
             },
             "development": {
-              "browserTarget": "advisor-workstation:build:development"
+              "buildTarget": "advisor-workstation:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "advisor-workstation:build"
+            "buildTarget": "advisor-workstation:build"
           }
         },
         "test": {
