@@ -1,12 +1,12 @@
 # Westlake Advisor Platform (WMP)
 
 Advisor-facing account, position transfer and cost-basis services for a fictional
-brokerage. Spring Boot 2.7 · Java 11 · Maven · JUnit 4 backend, with an Angular 14 advisor
+brokerage. Spring Boot 2.7 · Java 11 · Maven · JUnit 4 backend, with an Angular 18 advisor
 workstation in `frontend/`.
 
 This repository exists as a **realistic legacy-modernization sandbox** for demonstrating
 Devin in a customer setting. It is intentionally a little dated: Java 11, an EOL Spring Boot line,
-`javax.*` imports, an Angular 14 / Node 16 frontend, a vulnerable dependency, thin test
+`javax.*` imports, an Angular 18 / Node 20 frontend, a vulnerable dependency, thin test
 coverage on both tiers, and a subtle money-math bug ported from COBOL.
 
 ## Run
@@ -18,7 +18,7 @@ curl -s localhost:8080/api/v1/accounts/7781-2204/positions | jq
 curl -s -X POST localhost:8080/api/v1/transfers -H 'content-type: application/json' \
   -d '{"fromAccount":"7781-2204","toAccount":"7781-9930","symbol":"AAPL","quantity":120,"method":"FIFO"}'
 
-cd frontend && npm ci && npm start       # Angular 14 UI on http://localhost:4200 (proxies /api)
+cd frontend && nvm use && npm ci && npm start  # Angular 18 UI on http://localhost:4200 (proxies /api)
 npm test -- --watch=false --browsers=ChromeHeadless   # Karma + coverage
 ```
 
@@ -43,7 +43,7 @@ src/main/java/com/westlake/advisor
 ├── transfer/      TransferService: same-custodian position transfers
 ├── notification/  AdvisorNotifier (commons-text StringSubstitutor)
 └── web/           REST controllers under /api/v1
-frontend/          Angular 14 Advisor Workstation (positions table, transfer form)
+frontend/          Angular 18 Advisor Workstation (positions table, transfer form)
 ```
 
 All data is fictional. Account numbers, advisors and tickers do not refer to any real
