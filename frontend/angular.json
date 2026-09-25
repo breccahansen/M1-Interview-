@@ -102,7 +102,11 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "codeCoverage": true
+            "codeCoverage": true,
+            "include": [
+              "src/**/*.spec.ts",
+              "src/app/**/*.{component,service,pipe,module}.ts"
+            ]
           }
         }
       }
