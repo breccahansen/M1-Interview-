@@ -1,7 +1,7 @@
 # Advisor Workstation (frontend)
 
-Angular 14 single-page app used by advisors to view positions and submit same-custodian
-transfers against the WMP API. Built with NgModules, `HttpClientModule`, reactive forms and
+Angular 18 single-page app used by advisors to view positions and submit same-custodian
+transfers against the WMP API. Built with NgModules, `provideHttpClient`, reactive forms and
 Karma/Jasmine tests.
 
 ```bash
@@ -11,4 +11,4 @@ npm test -- --watch=false --browsers=ChromeHeadless   # unit tests + coverage (c
 npm run build
 ```
 
-Node 16 or 18 is required for Angular 14 (see `.nvmrc`).
+Use Node 20 (see `.nvmrc`).
